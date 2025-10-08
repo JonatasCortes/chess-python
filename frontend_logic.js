@@ -14,4 +14,24 @@ function display_pieces(){
 
 }
 
+function display_piece_animation(){
+    let pieces = document.querySelectorAll(".piece")
+
+    pieces.forEach(piece => {
+
+        piece.addEventListener("mouseenter", () => {
+
+            piece.classList.add("animate")
+
+            piece.addEventListener("animationend", () => {
+
+                piece.classList.remove("animate")
+                
+            }, {once: true})
+        })
+
+    })
+}
+
 display_pieces()
+display_piece_animation()

@@ -1,34 +1,32 @@
 body {
     display: flex;
-    place-items: center;
+    flex-direction: column; /* organiza verticalmente */
     justify-content: center;
-    align-items: center; /* centraliza verticalmente */
+    align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
-    background: linear-gradient(
-        to bottom,
-        black 0%,
-        rgb(132, 0, 0) 50%,
-        black 100%
-    );
+    background: linear-gradient(to bottom, black 0%, rgb(132, 0, 0) 50%, black 100%);
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 
-.board{
-    display: grid;
-    justify-content: center;
-    place-items: center;
-    margin: auto;
-}
-
-.row{
+.board {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-ul{
-    display: grid;
-    grid-template-columns: 1fr;
+.row {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 li{
@@ -38,15 +36,13 @@ li{
     font-size: 0;
 }
 
-.cell{
+.cell {
     width: 75px;
     height: 75px;
-    background: linear-gradient(
-    to top,
-    rgb(228, 126, 126) 0%,
-    rgb(230, 184, 184) 100%
-    );
+    background: linear-gradient(to top, rgb(228, 126, 126) 0%, rgb(230, 184, 184) 100%);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+    display: grid;
+    place-items: center;
 }
 
 h1{
@@ -64,7 +60,7 @@ h1{
     margin: 10px;
     font-size: 2rem;
     color: black;
-    text-align: center;
+    text-align: left;
     border: 2px solid rgb(37, 7, 7);
     background: linear-gradient(
         to top,
@@ -77,12 +73,10 @@ h1{
 
 @keyframes piece_animation{
     50%{
-        width: 85px;
-        height: 50px;
+        transform: scale(1.15, 0.67);
     }
     100%{
-        width: 75px;
-        height: 75px;
+        transform: scale(1, 1);
     }
 }
 
@@ -91,7 +85,10 @@ h1{
   height: 75px;
 }
 
-.piece:hover {
-    transition: all 0.2s ease;
-    animation: piece_animation 0.2s;
+.piece.animate {
+    animation-duration: 0.2s;
+    animation-name: piece_animation;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
 }
